@@ -280,15 +280,11 @@ app.getAllChecks = () => {
     let checkRowsLength;
     checkRowsLength = document.querySelector(".checkslength");
     let checksLimit = document.querySelector("[colspan='5']");
-    console.log(checksLimit);
     checkRows = document.querySelector("#checkrows");
     if(checkRows && checkRowsLength){
             const reqObj = {
                 method:"GET",
-            //     headers:{
-            //     token:app.config.sessionToken.tokenId,
-            // },
-            path:"/api/checks/all"
+                path:"/api/checks/all"
             }
             app.client.request(reqObj, (status, checksList) =>{
                 if(status == 200){
@@ -312,11 +308,10 @@ app.getAllChecks = () => {
                    };
 
                 } else {
-                    console.log("Couldn't fetch checks")
+                    console.log("Something went wrong: couldn't fetch checks")
                 };
             });
-        }
-                     // Handle error if response status is not 200;
+        };
 };
 
 
