@@ -32,8 +32,12 @@ h1{
     margin-bottom: 1rem;
     text-transform: uppercase;
 }
-h2{
+h2, h3{
     text-shadow: #8F8F8F;
+}
+p{
+    font-size: 1.2rem;
+    line-height: 1.5rem;
 }
 
 .nav{
@@ -109,12 +113,13 @@ h2{
     border-radius:0.8rem;
     width:40%;
     background:hsl(180, 50%, 30%);
+    color:#EEE;
 }
 .action-cta a{
-    color:#EEEEEE;
+    color:#EEE;
     display:inline-block;
     width:100%;
-    font-size: .8rem;
+    font-size: 1rem;
     font-weight: bold;
     line-height: .5rem;
     text-transform: uppercase;
