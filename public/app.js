@@ -69,7 +69,7 @@ app.client.request = async function(reqObj, callback){
              };
             
 };
-
+/** All edit/delete forms for users settings and checks  need to be popuplated with existing datas */
 app.loadFormData = function(){
     const forms = document.querySelectorAll("form");
     if(forms.length > 1){
@@ -100,6 +100,8 @@ app.loadFormData = function(){
                             console.log("Couldn't read user token");
                         };
                 break;
+            /* Only have access to the check id through qureryStringObj at the backend but the form ID will contain the 
+            specific form id when the view template is render grab it from there it's needed to populated the view */ 
             case `checks-edit1-${forms[0].id.replace("checks-edit1-", "")}`:
                 let id = forms[0].id.replace("checks-edit1-", "");
                 if(id){
@@ -130,6 +132,7 @@ app.loadFormData = function(){
                         };
                 break;
             default:
+                console.log("Unknown form ID!");
 
         };
 
@@ -354,12 +357,16 @@ app.processFormResponse = function(formId, formPayload, resPayload){
             break;
 
         case "user-edit3":
+            // Since user account is deleted route them to logout
             app.logUserOut();
             break;
         case "checkscreate":
+            // Show user the checks that was just created
             window.location = "/checks/all";
             break;
+
         default:
+            console.log("Unkown formId!");
 
                 };
 };
