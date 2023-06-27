@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- General Settings -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="{global.baseUrl}"/>
+    <!-- Meta Tags -->
+    <title>{head.title} | {global.appName}</title>
+    <meta name="description" content="{head.description}">
+    <!-- Static Assets-->
+    <link type="image/x-icon" rel="icon" href="favicon.ico"/>
+    <script type="text/javascript" charset="utf-8" src="public/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="public/app.css"/>
+<body class="{body.class}">
+     <!-- Header-->
+        <header class="header">
+            <!-- Logo -->
+            <nav class="nav">
+            <a class="nav__logo" href="/"><img src="public/dr3-logo.png" alt="Logo"/></a>
+            <ul class="nav__menus">
+                <li class="nav__menus__home nav__menus__list"><a href="/">Home</a></li>
+                <li class="nav__menus__signup nav__menus__list"><a href="/user/create">Signup</a></li>
+                <li class="nav__menus__login nav__menus__list"><a href="/session/create">Login</a></li>
+                <li class="nav__menus__dashboard nav__menus__list"><a  href="/checks/all">Dashboard</a></li>
+                <li class="nav__menus__account-settings nav__menus__list"><a  href="/user/edit">Account Settings</a></li>
+                <li class="nav__menus__logout nav__menus__list" id="logout"><a  href="/">Logout</a></li>
+            </ul>
+            </nav>
+        </header>
+    <!-- Page wrapper-->
+    <div class="wrapper">
+
+    <!-- Page specific Content-->
+    <div class="content">

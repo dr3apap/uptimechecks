@@ -1,0 +1,33 @@
+<h1>Account Settings</h1>
+<hr/>
+<h2>Edit your account settings</h2>
+<form id="user-edit1" action="/api/users" method="PUT">
+<span class="success"></span>
+<span class="error"></span>
+<input type="text" name="phone" id="phone" placeholder="Phone" disabled/>
+<label for="userphone">Phone Number
+</label>
+
+<label for="firstname">First Name
+</label>
+<input type="text" name="firstName" id="firstname" placeholder="First-Name"/>
+<label  for="lastname">Last Name
+</label>
+<input type="text" name="lastName" id="lastname" placeholder="Last-Name"/>
+<button type="submit" class="action__cta">Save Changes</button>
+</form>
+<hr/>
+<h2>Change your password</h2>
+<form id="user-edit2" action="/api/users" method="PUT">
+<span class="success"></span>
+<label for="password">Choose a New Password
+</label>
+<input type="password" name="password" id="password" placeholder="Make it secure!"/>
+<button type="submit" class="action__cta">Save Password</button>
+</form>
+<hr/>
+<h2>Delete your account</h2>
+<form id="user-edit3" action="/api/users" method="DELETE">
+    <h1>Warning:This action can't be undone. Don't click  this button on accident!</h1>
+    <button type="submit" class="action-cta userdelete__cta">Delete My Account</button>
+</form>

@@ -1,0 +1,280 @@
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border-width:0;
+    text-decoration: none;
+    list-style: none;
+
+}
+body{
+    font-family:"Inter", "sans-serif";
+}
+
+
+.wrapper{
+    width:100%;
+    min-width: 320px;
+    max-width: 720px;
+    margin:0 auto;
+}
+
+header{
+    height:21vh;
+}
+
+h1,h2,h3{
+    text-align: center;
+    width:100%;
+}
+h1{
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+h2{
+    text-shadow: #8F8F8F;
+}
+
+.nav{
+    width:100%;
+    padding:1rem 1.5rem;
+    display:flex;
+    justify-content: space-between;
+    position:fixed;
+    left:0;
+    top:0;
+    box-shadow:0 -25px 11px 20px #000;
+}
+
+.nav__logo{
+    display:block;
+    width:20%;
+    /* border:1px solid green; */
+}
+.nav__logo img {
+    max-width: 15%;
+}
+.nav__menus{
+    width:50%;
+    text-align:right;
+    flex:1rem;
+}
+.nav__menus__list:not(last-of-type){
+    display:inline-block;
+    margin-right: 1.5rem;
+        
+}
+.nav__menus__list a {
+    
+    display:inline-block;
+    font-weight: bold;
+    text-transform:uppercase;
+    color:#101010;
+}
+
+.content{
+    text-align: center;
+    padding:5rem 0;
+}
+.content__heading{
+    font-size:1.5rem;
+    color:#101010;
+    text-transform:uppercase;
+    margin-bottom: .5rem;
+    padding:0.2rem 1rem;
+}
+.content__subheading{
+    font-size: 1rem;
+    color:#101010;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+.content__message{
+    border-radius: 0.8rem;
+    background-color: #DDDDDD;
+    padding:1rem;
+}
+.ctawrapper{
+    display:flex;
+    row-gap: 1rem;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 2rem;
+    width:100%
+}
+.action-cta{
+    padding:1.2rem;
+    text-align: center;
+    border-radius:0.8rem;
+    width:45%;
+
+}
+.action-cta a{
+    color:#EEEEEE;
+    display:inline-block;
+    width:100%;
+    font-size: .8rem;
+    font-weight: bold;
+    line-height: .5rem;
+    text-transform: uppercase;
+}
+.ctawrapper__create{
+    background:green;
+}
+.ctawrapper__login{
+    background:blue;
+}
+footer{
+    padding:1.5rem 0;
+    background:#101010;
+}
+.copyright{
+    color:#EEEEEE;
+    text-align:center;
+}
+
+
+/* Styling for account/user create form*/
+#usercreate, #sessioncreate, #checkscreate{
+    display:flex;
+    flex-direction: column;
+    max-width: 720px;
+    min-width: 320px;
+    margin-top:1.5rem;
+    background:#DDDDDD;
+    padding:1rem;
+    border-radius: 0.2rem;
+}
+label:not([class="checks"]){
+    width:100%;
+    color:#101010;
+    text-align: left;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+input:not([type="checkbox"]), input:not([type="radio"]), select{
+    display:block;
+    width:100%;
+    padding:0.5rem;
+    border-radius: 0.2rem;
+    margin-bottom: 0.8rem;
+}
+.error{
+    font-size: 0.9rem;
+    color:#AA0000;
+    padding:0.5rem;
+    display:inline-block;
+
+}
+.usercreate__cta, .sessioncreate__cta, .checkscreate__cta{
+    width:100%;
+    padding:1.2rem;
+    color:#EEEEEE;
+    text-transform: uppercase;
+    border-radius: 0.8rem;
+    background:green;
+    display:inline-block;
+    align-self: center;
+
+}
+.loggedin > li[class~="nav__menus__login"], 
+.loggedin > li[class~="nav__menus__signup"]{
+    display:none;
+}
+.loggedout > li[class~="nav__menus__logout"], 
+.loggedout > li[class~="nav__menus__account-settings"],
+.loggedout > li[class~="nav__menus__dashboard"]{
+    display:none;
+}
+hr{
+    width:90%;
+    margin:30px 0;
+    border-width:1px;
+    color:#8F8F8F
+}
+
+/* General styling*/
+.hide{
+    display:none;
+}
+
+/* Styling for checks table*/
+table{
+    width:100%;
+}
+tr{
+   width:100%; 
+}
+th{
+    text-transform: uppercase;
+    font-weight: bold;
+    padding:0.8rem;
+    border:dotted #101010;
+    margin:0 0 0.8rem 0;
+    background-color: #EFEFEF;
+}
+td{
+    padding:5px;
+}
+
+td a, td a:hover, td a:active{
+    color:#2e5fa8;
+    text-decoration:underline;
+    cursor:pointer;
+
+}
+table caption:nth-of-type(1){
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+table caption:nth-of-type(2) {
+    margin-bottom: 1rem;
+    color:hsl(calc(var(--checks-length) * calc(180 / var(--checks-length))), 50%, 30%);
+}
+
+/* Checks form style*/
+
+.checkbox{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.checkbox__wrapper{
+    display:flex;
+    align-items: flex-start;
+    margin-bottom: 5px;
+}
+.checkbox__checks{
+  margin-right: 15px;
+  line-height: 32px;
+
+}
+input[name="successcodes"] {
+  appearance: none;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #999;
+  transition: 0.2s all linear;
+  margin-right: 5px;
+  position: relative;
+  top: 4px;
+}
+
+input[name="successcodes"]:checked {
+  border: 6px solid black;
+}
+label[for="successcodes"]{
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+select option{
+    font-size: 1.2rem;
+}
+.checkscreate__cta a{
+    color:#EEE;
+}

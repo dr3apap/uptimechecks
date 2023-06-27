@@ -1,0 +1,23 @@
+<h1>Create an Account!</h1>
+<h3>Sign up is easy and only takes few seconds</h3>
+<form id="{form.id}" action="/api/users" method="POST">
+<span class="error"></span>
+<span class="success"></span>
+<label for="firstname">First Name
+</label>
+<input type="text" name="firstName" id="firstname" placeholder="First-Name"/>
+<label  for="lastname">Last Name
+</label>
+<input type="text" name="lastName" id="lastname" placeholder="Last-Name"/>
+<label for="userphone">Phone Number
+</label>
+<input type="text" name="phone" id="userphone" placeholder="phone"/>
+<label for="password">Choose a Password
+</label>
+<input type="password" name="password" id="password" placeholder="password"/>
+<label for="tosAgreement">Do you agree to the terms and conditions?
+</label>
+<span class="error"></span>
+<input type="checkbox" name="tosAgreement" id="tosAgreement" value="green"/>
+<button type="submit" class="usercreate__cta">Get Started</button>
+</form>
