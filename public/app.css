@@ -1,4 +1,19 @@
 
+:root{
+--primary-cta:hsl(180, 50%, 30%);
+--secondary-cta:hsl(240, 50%, 55%);
+--warning:hsl(0, 50%, 50%);
+--text-dark:hsl(0, 0%, 93%);
+--text-light:hsl(0, 0%, 6%);
+--bg-light:hsl(0, 0%, 87%);
+
+}
+
+/* General styling*/
+
+
+
+
 *{
     box-sizing: border-box;
     padding: 0;
@@ -8,16 +23,9 @@
     list-style: none;
 
 }
+
 body{
     font-family:"Inter", "sans-serif";
-}
-
-
-.wrapper{
-    width:100%;
-    min-width: 320px;
-    max-width: 720px;
-    margin:0 auto;
 }
 
 header{
@@ -25,7 +33,7 @@ header{
 }
 
 h1,h2,h3{
-    text-align: center;
+    text-align: left;
     width:100%;
 }
 h1{
@@ -40,6 +48,13 @@ p{
     line-height: 1.5rem;
 }
 
+hr{
+    width:100%;
+    margin:30px 0;
+    border:1.5px solid #8F8F8F;
+}
+
+
 .nav{
     width:100%;
     padding:1rem 1.5rem;
@@ -48,6 +63,7 @@ p{
     position:fixed;
     left:0;
     top:0;
+    z-index: 1;
     box-shadow:0 -25px 11px 20px #000;
 }
 
@@ -77,6 +93,13 @@ p{
     color:#101010;
 }
 
+.wrapper{
+    width:100%;
+    min-width: 320px;
+    max-width: 720px;
+    margin:0 auto;
+}
+
 .content{
     text-align: center;
     padding:5rem 0;
@@ -86,7 +109,7 @@ p{
     color:#101010;
     text-transform:uppercase;
     margin-bottom: .5rem;
-    padding:0.2rem 1rem;
+    padding:0.2rem 0;
 }
 .content__subheading{
     font-size: 1rem;
@@ -97,12 +120,12 @@ p{
 .content__message{
     border-radius: 0.8rem;
     background-color: #DDDDDD;
-    padding:1rem;
+    word-wrap: break-word;
+    padding: 1rem;
 }
 .ctawrapper{
     display:flex;
-    row-gap: 1rem;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     margin-top: 2rem;
     width:100%
@@ -110,17 +133,19 @@ p{
 .action-cta{
     padding:1.2rem;
     text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
     border-radius:0.8rem;
-    width:40%;
+    width:45%;
     background:hsl(180, 50%, 30%);
     color:#EEE;
 }
+
+.hide{
+    display:none;
+}
 .action-cta a{
-    color:#EEE;
     display:inline-block;
-    width:100%;
-    font-size: 1rem;
-    font-weight: bold;
     line-height: .5rem;
     text-transform: uppercase;
 }
@@ -138,18 +163,10 @@ p{
 .ctawrapper__login{
     background:hsl(240, 50%, 55%);
 }
-footer{
-    padding:1.5rem 0;
-    background:#101010;
-}
-.copyright{
-    color:#EEEEEE;
-    text-align:center;
-}
 
 
-/* Styling for account/user create form*/
-#usercreate, #sessioncreate, #checkscreate, #useredit, #checksedit{
+/* General form styling*/
+form{
     display:flex;
     flex-direction: column;
     max-width: 720px;
@@ -159,15 +176,16 @@ footer{
     padding:1rem;
     border-radius: 0.2rem;
 }
-label:not([class="checks"]){
+
+
+label:not([class="checkbox__checks"]){
     width:100%;
     color:#101010;
     text-align: left;
     margin-bottom: 5px;
-    text-transform: uppercase;
 }
 
-input:not([type="checkbox"]), input:not([type="radio"]), select{
+input:not([type="checkbox"]), select{
     display:block;
     width:100%;
     padding:0.5rem;
@@ -176,7 +194,7 @@ input:not([type="checkbox"]), input:not([type="radio"]), select{
 }
 .error, .success{
     font-size: 0.9rem;
-    padding:1rem;
+    padding:1.5rem;
     display:none;
     margin:1rem 0;
     color:#EEEEEE;
@@ -188,17 +206,7 @@ input:not([type="checkbox"]), input:not([type="radio"]), select{
 .error{
     background:hsl(0, 50%, 50%);
 }
-.usercreate__cta, .sessioncreate__cta, .checkscreate__cta{
-    width:40%;
-    padding:1.2rem;
-    color:#EEEEEE;
-    text-transform: uppercase;
-    border-radius: 0.8rem;
-    background:hsl(180, 50%, 30%);
-    display:inline-block;
-    align-self: center;
 
-}
 .loggedin > li[class~="nav__menus__login"], 
 .loggedin > li[class~="nav__menus__signup"]{
     display:none;
@@ -208,17 +216,9 @@ input:not([type="checkbox"]), input:not([type="radio"]), select{
 .loggedout > li[class~="nav__menus__dashboard"]{
     display:none;
 }
-hr{
-    width:90%;
-    margin:30px 0;
-    border-width:1px;
-    color:#8F8F8F
-}
 
-/* General styling*/
-.hide{
-    display:none;
-}
+
+
 
 /* Styling for checks table*/
 table{
@@ -248,11 +248,15 @@ td a, td a:hover, td a:active{
 table caption:nth-of-type(1){
     font-weight: bold;
     margin-bottom: 1rem;
+    text-align: left;
 }
 table caption:nth-of-type(2) {
     margin-bottom: 1rem;
-    color:hsl(calc(var(--checks-length) * calc(180 / var(--checks-length))), 50%, 30%);
+    color:hsl(180, 50%, 30%);
+    text-align: left;
 }
+
+
 
 /* Checks form style*/
 
@@ -260,10 +264,11 @@ table caption:nth-of-type(2) {
     display:flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    align-items: center;
 }
 .checkbox__wrapper{
     display:flex;
-    align-items: flex-start;
+    align-items: center;
     margin-bottom: 5px;
 }
 .checkbox__checks{
@@ -297,4 +302,19 @@ select option{
 }
 .checkscreate__cta a{
     color:#EEE;
+}
+
+.footer{
+    position: fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    padding:1.5rem 0;
+    background:#101010;
+    padding:1.5rem 0;
+    background:#101010;
+}
+.copyright{
+    color:#EEEEEE;
+    text-align:center;
 }

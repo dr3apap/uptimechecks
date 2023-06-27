@@ -14,11 +14,10 @@
     </tbody>
 </table>
 <hr/>
-<hr/>
-<h2>Edit Check {check.id}</h2>
+<h2>Edit Check Id: {check.id}</h2>
 <form id="{form.id}" action="/api/checks" method="PUT">
-<label for="uid">Check Id</label>
-<input type="text" name="uid" id="uid" disabled/>
+<label for="uid">Check-Id</label>
+<input type="text" name="uid" id="uid" value = "{check.id}" disabled/>
 <label for="protocol">Protocol</label>
 <select name="protocol" id="protocol"/>
     <option value="http">http://</option>
@@ -86,11 +85,11 @@
     <option value="5">5 Seconds</option>
 </select>
 
-<button type="submit" class="checkscreate__cta">Save checK</button>
+<button type="submit" class="action-cta">Save Check</button>
 </form>
 <hr/>
 <h2>Delete Check {check.id}</h2>
-<form id="{form.id}" action="/api/checks" method="DELETE">
+<form id="{form.id2}" action="/api/checks" method="DELETE">
     <h3 class="delete-warning">Warning:This action can't be undone. Don't click  this button on accident!</h3>
     <button type="submit" class="action-cta delete-cta">Delete Check</button>
 </form>
