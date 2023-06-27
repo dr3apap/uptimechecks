@@ -149,7 +149,7 @@ footer{
 
 
 /* Styling for account/user create form*/
-#usercreate, #sessioncreate, #checkscreate{
+#usercreate, #sessioncreate, #checkscreate, #useredit, #checksedit{
     display:flex;
     flex-direction: column;
     max-width: 720px;

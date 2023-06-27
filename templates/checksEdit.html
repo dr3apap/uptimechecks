@@ -1,4 +1,4 @@
-<h1>Your are viewing {check.id}</h1>
+<h1>Your are currently viewing check Id: {check.id}</h1>
 <hr/>
 <table>
     <thead class="checkcolumn;">
@@ -15,7 +15,7 @@
 </table>
 <hr/>
 <hr/>
-<h2>Edit Check "{check.id}"</h2>
+<h2>Edit Check {check.id}</h2>
 <form id="{form.id}" action="/api/checks" method="PUT">
 <label for="uid">Check Id</label>
 <input type="text" name="uid" id="uid" disabled/>
@@ -89,7 +89,7 @@
 <button type="submit" class="checkscreate__cta">Save checK</button>
 </form>
 <hr/>
-<h2>Delete Check "{check.id}"</h2>
+<h2>Delete Check {check.id}</h2>
 <form id="{form.id}" action="/api/checks" method="DELETE">
     <h3 class="delete-warning">Warning:This action can't be undone. Don't click  this button on accident!</h3>
     <button type="submit" class="action-cta delete-cta">Delete Check</button>
