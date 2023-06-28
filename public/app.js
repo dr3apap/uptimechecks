@@ -125,7 +125,7 @@ app.loadFormData = function(){
                             tr.insertCell().textContent = state;
                             formChildren = Array.from(forms[0].elements);
                             formChildren.forEach((element) => {
-                                const checksSuccessCodes = {threezeroone:"301", threezerotwo:"302", fourhundreds:"400", fourzeroone:"401", fourzerotwo:"402", fourzerothree:"403", fourzerofour:"404",fourzerosix:"406", fivehundreds:"500"};
+                                const checksSuccessCodes = {threezeroone:301, threezerotwo:302, fourhundreds:400, fourzeroone:401, fourzerotwo:402, fourzerothree:403, fourzerofour:404,fourzerosix:406, fivehundreds:500};
                                 if(Object.keys(checksSuccessCodes).includes(element.id)) successCodes.includes(checksSuccessCodes[element.id])?element.setAttribute("checked", true):"";
                                 if(element.name == "httpMethod") element.value = method;
                                 if(element.name == "uid") element.value = id;
@@ -188,7 +188,7 @@ app.processFormRequest = function(){
                     // We only initialize the payload with array of successcodes if we are here and it hasn't before;
                     formPayload[elName] = typeof formPayload[elName] == "object" && formPayload[elName] instanceof Array?formPayload[elName]:[];
                     // filter the value of only input with checked attribute and add them to successCodes
-                    if(inputValue) formPayload[elName].push(element.value);
+                    if(inputValue) formPayload[elName].push(parseInt(element.value));
                 } else {
                     if(element.name == "httpMethod") {
                         formPayload.method = inputValue;
