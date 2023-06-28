@@ -12,8 +12,6 @@
 /* General styling*/
 
 
-
-
 *{
     box-sizing: border-box;
     padding: 0;
@@ -36,6 +34,7 @@ header{
 h1,h2,h3{
     text-align: left;
     width:100%;
+    text-transform: uppercase;
 }
 h1{
     margin-bottom: 1rem;
