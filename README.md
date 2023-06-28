@@ -4,11 +4,14 @@ An imitation of the popular "ping" network utilities but allow up to five URL an
 
 ## Dependencies
 
-Node, Knex, sqlite3, dotenv
+- Node
+- Knex
+- sqlite3
+- dotenv
 
 ## DevDependencies
 
-Nodemon
+- Nodemon
 
 ## Usage
 
