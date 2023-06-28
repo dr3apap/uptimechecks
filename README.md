@@ -2,6 +2,14 @@
 
 An imitation of the popular "ping" network utilities but allow up to five URL and automatically send sms notifications base on if URL is up or down corresponding to the configuration "success codes"
 
+## Dependencies
+
+Node, Knex, sqlite3, dotenv
+
+## DevDependencies
+
+Nodemon
+
 ## Usage
 
 User account is necessarily, upon registration users can add up to 5 URl, Either http/https protocol per check, one of the CRUD Method,
@@ -18,4 +26,4 @@ static assets are serve from the public directory and the client sides HTML is g
 
 ### Frontend
 
-any client sides codes are link via JS the client sides codes in in the public directory
+Any client sides codes are link via JS the client sides codes is located in app.js inside the public directory
