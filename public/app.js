@@ -72,6 +72,7 @@ app.client.request = async function(reqObj, callback){
 app.loadFormData = function(){
     const forms = document.querySelectorAll("form");
     if(forms.length > 1){
+        const checksEditForm = forms[0].id.replace("checks-edit1-", "");
         let userPhone;
         let formChildren;
         switch(forms[0].id){
@@ -101,20 +102,20 @@ app.loadFormData = function(){
                 break;
             /* Only have access to the check id through qureryStringObj at the backend but the form ID will contain the 
             specific form id when the view template is render grab it from there it's needed to populated the view */ 
-            case `checks-edit1-${forms[0].id.replace("checks-edit1-", "")}`:
+            case `checks-edit1-${checksEditForm}`:
                 let id = forms[0].id.replace("checks-edit1-", "");
                 if(id){
                     const reqObj = {
                         path:"/api/checks", 
                         method:"GET", 
                         queryStringObj:{
-                            id:forms[0].id.replace("checks-edit1-", ""),
+                            id:checksEditForm,
                         },
                        
                     };
                     app.client.request(reqObj,(status, res) => {
                         if(status == 200){
-                            const { method, url, protocol, id, state } = res;
+                            const { method, url, protocol, id, state, successCodes, timeout } = res;
                             const checkRows = document.querySelector("#checkrows");
                             tr = checkRows.insertRow(-1);
                             tr.insertCell().textContent = id; 
@@ -122,6 +123,16 @@ app.loadFormData = function(){
                             tr.insertCell().textContent = protocol;
                             tr.insertCell().textContent = url;
                             tr.insertCell().textContent = state;
+                            formChildren = Array.from(forms[0].elements);
+                            formChildren.forEach((element) => {
+                                const checksSuccessCodes = {threezeroone:"301", threezerotwo:"302", fourhundreds:"400", fourzeroone:"401", fourzerotwo:"402", fourzerothree:"403", fourzerofour:"404",fourzerosix:"406", fivehundreds:"500"};
+                                if(Object.keys(checksSuccessCodes).includes(element.id)) successCodes.includes(checksSuccessCodes[element.id])?element.setAttribute("checked", true):"";
+                                if(element.name == "httpMethod") element.value = method;
+                                if(element.name == "uid") element.value = id;
+                                if(element.name == "timeout") element.value = timeout;
+                                if(element.name == "url") element.value = url;
+                                if(element.name == "protocol") element.value = protocol;
+                            });
 
                         }
                         

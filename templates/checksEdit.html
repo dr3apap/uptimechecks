@@ -16,76 +16,75 @@
 <hr/>
 <h2>Edit Check Id: {check.id}</h2>
 <form id="{form.id}" action="/api/checks" method="PUT">
-<label for="uid">Check-Id</label>
-<input type="text" name="uid" id="uid" value = "{check.id}" disabled/>
-<label for="protocol">Protocol</label>
-<select name="protocol" id="protocol"/>
-    <option value="http">http://</option>
-    <option value="https">https://</option>
-</select>
-<label for="url">Url (not including protocol)</label>
-<input type="text" name="url" id="url" placeholder="example.com/my/path"/>
-<label for="successcodes">Success Codes (Http codes that should represent "up")</label>
-<div class="checkbox">
-<div class="checkbox__wrapper">
-    <input type ="checkbox" name="successCodes" id="twohundred" value="200" checked/>
-    <label for="twohundred" class="checkbox__checks">200</label>
-</div>
+    <label for="uid">Check-Id</label>
+    <input type="text" name="uid" id="uid" disabled/>
+    <label for="protocol">Protocol</label>
+    <select name="protocol" id="protocol"/>
+        <option value="http">http://</option>
+        <option value="https">https://</option>
+    </select>
+    <label for="url">Url (not including protocol)</label>
+    <input type="text" name="url" id="url" placeholder="example.com/my/path"/>
+    <label for="successcodes">Success Codes (Http codes that should represent "up")</label>
+    <div class="checkbox">
+    <div class="checkbox__wrapper">
+        <input type ="checkbox" name="successCodes" id="twohundreds" value="200" checked/>
+        <label for="twohundred" class="checkbox__checks">200</label>
+    </div>
 
-<div class="checbox__wrapper">
-    <input type ="checkbox" name="successCodes" id="twozeroone" value="201" checked/>
-    <label for="twozeroone" class="checkbox__checks">201</label>
-</div>
+    <div class="checbox__wrapper">
+        <input type ="checkbox" name="successCodes" id="twozeroone" value="201" checked/>
+        <label for="twozeroone" class="checkbox__checks">201</label>
+    </div>
 
-<div class="checkbox__wrapper">
-    <input type ="checkbox" name="successCodes" id="threezeroone" value="301"/>
-    <label for="threezeroone" class="checkbox__checks">301</label>
-</div>
+    <div class="checkbox__wrapper">
+        <input type ="checkbox" name="successCodes" id="threezeroone" value="301"/>
+        <label for="threezeroone" class="checkbox__checks">301</label>
+    </div>
 
-<div class="checkbox__wrapper">
-    <input type ="checkbox" name="successCodes" id="threezerotwo" value="302"/>
-    <label for="threezerotwo" class="checkbox__checks">302</label>
-</div>
+    <div class="checkbox__wrapper">
+        <input type ="checkbox" name="successCodes" id="threezerotwo" value="302"/>
+        <label for="threezerotwo" class="checkbox__checks">302</label>
+    </div>
 
-<div class="checkbox__wrapper">
-    <input type ="checkbox" name="successCodes" id="fourhundred" value="400"/>
-    <label for="fourhundred" class="checkbox__checks">400</label>
-</div>
+    <div class="checkbox__wrapper">
+        <input type ="checkbox" name="successCodes" id="fourhundreds" value="400"/>
+        <label for="fourhundred" class="checkbox__checks">400</label>
+    </div>
 
-<div class="checkbox__wrapper">
-    <input type ="checkbox" name="successCodes" id="fourzerothree" value="403"/>
-    <label for="fourzerothree" class="checkbox__checks">403</label>
-</div>
-<div class="checkbox__wrapper">
-    <input type ="checkbox" name="successCodes" id="fourzerofour" value="404"/>
-    <label for="fourzerofour" class="checkbox__checks">404</label>
-</div>
-<div class="checkbox__wrapper">
-    <input type ="checkbox" name="successCodes" id="fourzerosix" value="406"/>
-    <label for="fourzerosix" class="checkbox__checks">406</label>
-</div>
-<div class="checkbox__wrapper">
-    <input type ="checkbox" name="successCodes" id="fivehundred" value="500"/>
-    <label for="fivehundred" class="checkbox__checks">500</label>
-</div>
-</div>
-<label for="methods">Method</label>
-<select id="methods" name="httpMethod">
-    <option value="get">GET</option>
-    <option value="post">POST</option>
-    <option value="put">PUT</option>
-    <option value="delete">DELETE</option>
-</select>
-<label for="timeout">Timeout</label>
-<select id="timeout" name="timeout">
-    <option value="1">1 Second</option>
-    <option value="2">2 Seconds</option>
-    <option value="3">3 Seconds</option>
-    <option value="4">4 Seconds</option>
-    <option value="5">5 Seconds</option>
-</select>
-
-<button type="submit" class="action-cta">Save Check</button>
+    <div class="checkbox__wrapper">
+        <input type ="checkbox" name="successCodes" id="fourzerothree" value="403"/>
+        <label for="fourzerothree" class="checkbox__checks">403</label>
+    </div>
+    <div class="checkbox__wrapper">
+        <input type ="checkbox" name="successCodes" id="fourzerofour" value="404"/>
+        <label for="fourzerofour" class="checkbox__checks">404</label>
+    </div>
+    <div class="checkbox__wrapper">
+        <input type ="checkbox" name="successCodes" id="fourzerosix" value="406"/>
+        <label for="fourzerosix" class="checkbox__checks">406</label>
+    </div>
+    <div class="checkbox__wrapper">
+        <input type ="checkbox" name="successCodes" id="fivehundreds" value="500"/>
+        <label for="fivehundred" class="checkbox__checks">500</label>
+    </div>
+    </div>
+    <label for="methods">Method</label>
+    <select id="methods" name="httpMethod">
+        <option value="get">GET</option>
+        <option value="post">POST</option>
+        <option value="put">PUT</option>
+        <option value="delete">DELETE</option>
+    </select>
+    <label for="timeout">Timeout</label>
+    <select id="timeout" name="timeout">
+        <option value="1">1 Second</option>
+        <option value="2">2 Seconds</option>
+        <option value="3">3 Seconds</option>
+        <option value="4">4 Seconds</option>
+        <option value="5">5 Seconds</option>
+    </select>
+    <button type="submit" class="action-cta">Save Check</button>
 </form>
 <hr/>
 <h2>Delete Check {check.id}</h2>
