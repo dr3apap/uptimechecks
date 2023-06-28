@@ -22,7 +22,6 @@ window.onload = function(){
 }
 
 
-
 //General client side routine for fetching and storing data from the backend
 app.client = {};
 app.client.request = async function(reqObj, callback){
@@ -58,7 +57,7 @@ app.client.request = async function(reqObj, callback){
             cache:'default',
         }
 
-        method !== "GET"?sanitizedReqObj.body = JSON.stringify(formPayload):sanitizedReqObj;
+        if(method !== "GET" && method !== "DELETE") sanitizedReqObj.body = JSON.stringify(formPayload);
             //make the request and pass the callback for response if callback not false;
             //Check if callbck is false and handle it
             //fetch(reqUrl, sanitizedReqObj);
@@ -139,48 +138,67 @@ app.loadFormData = function(){
    };
 };
 app.processFormRequest = function(){
-    let forms;
+     var forms;
     if((forms = document.querySelectorAll("form"))){
     forms.forEach((form) => { 
         form.addEventListener("submit", function(e){
-        e.preventDefault();
-        const formId = this.id;
-        const path  = this.action;
-        const method = this.method.toUpperCase();
-        const formChildren = Array.from(this.elements);
-        //if(element.className == "error") element.style.display = "hidden";
-        const formPayload = {};
-        let generalError;
-        formChildren.forEach((element) => {
-         generalError = element.className == "error"? element:"";
-            if(element.type !== "submit") var inputValue = element.type == "checkbox"?element.checked:element.value;
-            // filter out the input with the name of successcodes and checked attributes
-            if(typeof inputValue == "boolean" && element.name == "successCodes"){
-                let elName = element.name;
-                // We only initialize the payload with array of successcodes if we are here and it hasn't before;
-                formPayload[elName] = typeof formPayload[elName] == "object" && formPayload[elName] instanceof Array?formPayload[elName]:[];
-                // filter the value of only input with checked attribute and add them to successCodes
-                if(inputValue) formPayload[elName].push(element.value);
-            } else {
-                if(element.name == "httpMethod") {
-                    formPayload.method = inputValue;
-                } else if(element.name == "timeout") {
-                    formPayload[element.name] = parseInt(inputValue);
+            e.preventDefault();
+            var formId = this.id;
+            var method = this.method.toUpperCase();
+            var path  = this.action;
+            var formChildren = Array.from(this.elements);
+            var formPayload = {};
+            var queryStringObj = {};
+            var id;
+            var generalError
+            var path;
+            var formChildren;
+        if(formId.includes("checks-edit2")){
+            let idToParse = formId;
+            formId = idToParse.replace(/\W\w{10,}/, "");
+            id = idToParse.replace(/checks-edit\d-/, "");
+            queryStringObj.id = id;
+            method = "DELETE";
+        } else {
+            if(this.id.includes("checks-edit1")) {
+                let idToParse = formId;
+                formId = idToParse.replace(/\W\w{10,}/, "");
+                id = idToParse.replace(/checks-edit\d-/, "");
+                queryStringObj.id = id;
+                method = "PUT";
+            }
+            //if(element.className == "error") element.style.display = "hidden";
+            formChildren.forEach((element) => {
+            generalError = element.className == "error"? element:"";
+                if(element.type !== "submit") var inputValue = element.type == "checkbox"?element.checked:element.value;
+                // filter out the input with the name of successcodes and checked attributes
+                if(typeof inputValue == "boolean" && element.name == "successCodes"){
+                    let elName = element.name;
+                    // We only initialize the payload with array of successcodes if we are here and it hasn't before;
+                    formPayload[elName] = typeof formPayload[elName] == "object" && formPayload[elName] instanceof Array?formPayload[elName]:[];
+                    // filter the value of only input with checked attribute and add them to successCodes
+                    if(inputValue) formPayload[elName].push(element.value);
                 } else {
-                    //Any other input with type checked  or any other type is good to be added to payload;
-                    formPayload[element.name] = inputValue;
+                    if(element.name == "httpMethod") {
+                        formPayload.method = inputValue;
+                    } else if(element.name == "timeout") {
+                        formPayload[element.name] = parseInt(inputValue);
+                    } else {
+                        //Any other input with type checked  or any other type is good to be added to payload;
+                        formPayload[element.name] = inputValue;
+                    }
+                    
                 }
-                 
-            }
-            // TODO:switch on each element name to display customize error message per each input
-            // remove display message next run
-            if(element.name == "tosAgreement" && !inputValue) {
-               element.nextElementSibling.textContent = "You must agree to our tosAgreement"; 
-            }
-            
-        });
-        console.log("Current payloadf from formm input", formPayload); 
-        app.client.request({path, method, formPayload}, (status, res) => {
+                // TODO:switch on each element name to display customize error message per each input
+                // remove display message next run
+                if(element.name == "tosAgreement" && !inputValue) {
+                generalError.textContent = "You must agree to our tosAgreement"; 
+                }
+                
+            });
+        }
+        //formPayload = method != "DELETE"?formPayload:{queryStringObj:{ id }};
+        app.client.request({path, method, formPayload, queryStringObj}, (status, res) => {
            if(status == 201 || status == 200){
             app.processFormResponse(formId,formPayload, res);
            } else {
@@ -322,6 +340,7 @@ app.getAllChecks = () => {
 
 app.processFormResponse = function(formId, formPayload, resPayload){
     //Process all the reponse that came from processFromRequest input, redirect users and perform all the view/delete/edit
+    console.log("From proecessFormRequesr", formId);
     switch(formId){
         case "usercreate":
             // Log user in and get token for protected routes
@@ -364,10 +383,16 @@ app.processFormResponse = function(formId, formPayload, resPayload){
             // Show user the checks that was just created
             window.location = "/checks/all";
             break;
+        case "checks-edit1":
+            window.location = "/checks/all";
+            break;
+        case "checks-edit2":
+            window.location = "/checks/all";
+            break;
 
         default:
             console.log("Unkown formId!");
 
-                };
+        };
 };
 

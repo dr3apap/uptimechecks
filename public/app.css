@@ -63,7 +63,7 @@ hr{
     position:fixed;
     left:0;
     top:0;
-    z-index: 1;
+    z-index: 1000;
     box-shadow:0 -25px 11px 20px #000;
 }
 
@@ -148,6 +148,7 @@ hr{
     display:inline-block;
     line-height: .5rem;
     text-transform: uppercase;
+    color:#EEE;
 }
 .delete-cta{
     background:hsl(0, 50%, 50%);
@@ -216,7 +217,6 @@ input:not([type="checkbox"]), select{
 .loggedout > li[class~="nav__menus__dashboard"]{
     display:none;
 }
-
 
 
 
