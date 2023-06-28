@@ -285,24 +285,25 @@ app.getToken = function(){
 };
 
 app.setLoggedIn = function(add){
-const ul =  document.querySelector(".nav__menus");
+const navMenus =  document.querySelector(".nav__menus");
+const authCta = document.querySelector(".ctawrapper"); 
     if(add){
-        ul.classList.add("loggedin");   
-        ul.classList.remove("loggedout");
+        navMenus.classList.add("loggedin");   
+        navMenus.classList.remove("loggedout");
+        authCta?.classList?.add("loggedin");
 } else {
-    ul.classList.remove("loggedin")
-    ul.classList.add("loggedout");
+    navMenus.classList.remove("loggedin");
+    navMenus.classList.add("loggedout");
+    authCta?.classList?.contains("loggedin")?authCta.classList.remove("logggedin"):"";
 }
 
 };
 
 app.getAllChecks = () => {
-    let checkRows;
-    let checkRowsLength;
-    checkRowsLength = document.querySelector(".checkslength");
-    let checksLimit = document.querySelector("[colspan='5']");
-    checkRows = document.querySelector("#checkrows");
-    if(checkRows && checkRowsLength){
+    var checkRowsLength = document.querySelector(".checkslength");
+    var checksLimit = document.querySelector("[colspan='5']");
+    var checksRow = document.querySelector("#checksrow");
+    if(checksRow && checkRowsLength){
             const reqObj = {
                 method:"GET",
                 path:"/api/checks/all"
@@ -312,12 +313,13 @@ app.getAllChecks = () => {
                 checkRowsLength.textContent = checksList.length;
                 checksLimit.style.setProperty("--checks-length", checksList.length);
                     if(checksList.length == 5){
-                        checksLimit.innerHTML = "You have reached Your Maximum Checks Limit!"
-                        document.querySelector("#checkrows__add").classList.add("hide");
+                        checksLimit.innerHTML = "You have reached Your Maximum Checks Limit (5)!"
+                        const createCheckCta = document.querySelector(".checksrow__ctaWrapper")
+                        createCheckCta.classList.add("hide");
                     };
                     if(checksList.length > 0){
                         for(let i = 0; i<checksList.length; i++){
-                            const tr = checkRows.insertRow(-1);
+                            const tr = checksRow.insertRow(-1);
                             const { protocol, method, url, state, id } = checksList[i];
                             tr.insertCell().textContent = method.toUpperCase();
                             tr.insertCell().textContent = `${protocol}://`; 

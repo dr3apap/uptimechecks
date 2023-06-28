@@ -30,6 +30,7 @@ body{
 
 header{
     height:21vh;
+    z-index: 1000;
 }
 
 h1,h2,h3{
@@ -41,7 +42,7 @@ h1{
     text-transform: uppercase;
 }
 h2, h3{
-    text-shadow: #8F8F8F;
+    text-shadow: #8F8F8F
 }
 p{
     font-size: 1.2rem;
@@ -63,8 +64,7 @@ hr{
     position:fixed;
     left:0;
     top:0;
-    z-index: 1000;
-    box-shadow:0 -25px 11px 20px #000;
+    box-shadow:0 -25px 11px 20px var(--text-light);
 }
 
 .nav__logo{
@@ -119,9 +119,15 @@ hr{
 }
 .content__message{
     border-radius: 0.8rem;
-    background-color: #DDDDDD;
-    word-wrap: break-word;
+    background: #DDDDDD;
     padding: 1rem;
+    box-shadow:0.4 0.4 11px 20px var(--text-light);
+}
+.content__message p {
+    word-wrap: break-word;
+    line-height: 1.5rem;
+    font-size:1rem;
+    text-align: left;
 }
 .ctawrapper{
     display:flex;
@@ -131,24 +137,45 @@ hr{
     width:100%
 }
 .action-cta{
-    padding:1.2rem;
+    padding:1rem;
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: bold;
     border-radius:0.8rem;
     width:45%;
     background:hsl(180, 50%, 30%);
     color:#EEE;
+    letter-spacing: .1rem;
 }
 
-.hide{
-    display:none;
-}
 .action-cta a{
     display:inline-block;
+    width:100%;
     line-height: .5rem;
     text-transform: uppercase;
     color:#EEE;
+}
+
+.ctawrapper__login{
+    border-radius: 0.8rem;
+    width:45%;
+    display:flex;
+    flex-direction: column;
+    align-items: center
+}
+.ctawrapper__login span{
+    display:inline-block;
+    width: 100%;
+   color:var(--bg-light);
+   margin-top: .2rem;
+   text-align: center;
+}
+.ctawrapper__login{
+    background:var(--secondary-cta);
+    cursor:pointer;
+}
+.hide{
+    display:none;
 }
 .delete-cta{
     background:hsl(0, 50%, 50%);
@@ -160,9 +187,6 @@ hr{
 }
 .ctawrapper__create{
     background:hsl(180, 50%, 30%);
-}
-.ctawrapper__login{
-    background:hsl(240, 50%, 55%);
 }
 
 
@@ -195,7 +219,7 @@ input:not([type="checkbox"]), select{
 }
 .error, .success{
     font-size: 0.9rem;
-    padding:1.5rem;
+    padding:1rem;
     display:none;
     margin:1rem 0;
     color:#EEEEEE;
@@ -209,7 +233,7 @@ input:not([type="checkbox"]), select{
 }
 
 .loggedin > li[class~="nav__menus__login"], 
-.loggedin > li[class~="nav__menus__signup"]{
+.loggedin > li[class~="nav__menus__signup"],.loggedin.ctawrapper {
     display:none;
 }
 .loggedout > li[class~="nav__menus__logout"], 
@@ -231,7 +255,6 @@ th{
     text-transform: uppercase;
     font-weight: bold;
     padding:0.8rem;
-    border:dotted #101010;
     margin:0 0 0.8rem 0;
     background-color: #EFEFEF;
 }
@@ -256,7 +279,10 @@ table caption:nth-of-type(2) {
     text-align: left;
 }
 
-
+.checksrow__ctaWrapper{
+    margin-top: 1rem;
+    text-align: left;
+}
 
 /* Checks form style*/
 
@@ -309,12 +335,11 @@ select option{
     bottom:0;
     left:0;
     right:0;
-    padding:1.5rem 0;
     background:#101010;
-    padding:1.5rem 0;
-    background:#101010;
+    padding:1rem 0;
 }
 .copyright{
     color:#EEEEEE;
     text-align:center;
+    font-size: .7rem;
 }
