@@ -22,11 +22,20 @@ timeout in seconds to signify "down state", list of succescodes that correspond 
 
 ### Backend
 
-All data manipulated by the program are persisted on the hard disk via filessytem, .data is the root directory for any data related
+All data manipulated by the program are persisted on the hard disk via filessytem, .data is the root directory for any data related codes,
 each module/library has a directory in the .data that correspond to the specific data i.e users related data is stored in ./data/users
-checks = .data/checks , tokens = .data/tokens and .logs hold all logs related to checks activities performed by the workers every minutes  compressed daily
-static assets are serve from the public directory and the client sides HTML is generated on the server sides by  specicific route handler  from the template directorr
+checks = .data/checks , tokens = .data/tokens and .logs hold all logs related to checks activities performed by the workers every minutes  compressed daily and the .data/logs is the library that handle any logs related data
+
+static assets are serve from the public directory and the client sides HTML is generated on the server sides by  specicific route handler  from the template directory
 
 ### Frontend
 
 Any client sides codes are link via JS the client sides codes is located in app.js inside the public directory
+
+### CLI
+
+Admin can use the CLI to check for all Users, specific Users by [,--userId], all Checks, with either [,--up] for all Checks with up State and [,--down] for all Checks with down State, specific Checks by [,--checkId], all compressed log files note: only log file names which mapped to the check Id concatenated with the compressed date, specific log details by the log fileName [,--logsFileName]
+
+### WIP
+
+Admin should be able to filter log files name query by days=hours default is 24hrs = --one-day EX: "list logs --one-day, list logs --two-days, list logs --one-week ... and can follow it up by decompressing and showing the log details with logs details --{logsFileName}
