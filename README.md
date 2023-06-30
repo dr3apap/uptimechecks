@@ -34,7 +34,7 @@ Any client sides codes are link via JS the client sides codes is located in app.
 
 ### CLI
 
-Admin can use the CLI to check for all Users, specific Users by [,--userId], all Checks, with either [,--up] for all Checks with up State and [,--down] for all Checks with down State, specific Checks by [,--checkId], all compressed log files note: only log file names which mapped to the check Id concatenated with the compressed date, specific log details by the log fileName [,--logsFileName]
+Admin can use the CLI to check for all Users, specific Users by [,--userId], all Checks, with either [,--up] for all Checks with up State and [,--down] for all Checks with down State, specific Checks by [,--checkId], all compressed log files note: only log file names which mapped to the check Id concatenated with the compressed date, specific log details by the log fileName [,--logsFileName] in the data base. To see all commands help or man will print all commands and their options/switch
 
 ### WIP
 
