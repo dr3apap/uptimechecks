@@ -7,7 +7,16 @@ module.exports  = {
     },
     useNullAsDefault:true,
     migrations:{
-        directory:'./.data/db/users', 
+        directory:'./.data/db/migration', 
+    },
+    seed:{
+        directory:'./.data/db/seed'
+    },
+
+    pool:{
+        afterCreate:(conn, done) => {
+        conn('Pragma foreign_key', done)   
     }
+},
     },
 };
