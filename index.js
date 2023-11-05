@@ -18,8 +18,8 @@ server.init();
 // Workers Start/Init
 workers.init();
 
-// Start the CLI, but starts it last so that the console doesn't get clogged by outputs we want to be able to
-// see the output of the servers starting and the workers too.
+/* Start the CLI, but start it last so that the console doesn't get clogged by outputs we want to be able to
+ see the output of the servers starting and the workers too.*/
 setTimeout(function(){
     cli.init();
 },50);
