@@ -1,29 +1,7 @@
-const helpers = require('../lib/helpers');
-
-const assert = require('assert')
 
 const _app = {}
-_app.tests = {
-    'unit': {},
-}
-
-_app.tests.unit['helpers.returnNumber should return 1'] = function(done) {
-    const val = helpers.returnNumber();
-    assert.equal(val, 1);
-    done();
-}
-
-
-_app.tests.unit['helpers.returnNumber should return number'] = function(done) {
-    const val = helpers.returnNumber();
-    assert.equal(typeof (val), 'number');
-    done();
-}
-_app.tests.unit['helpers.returnNumber should return 2'] = function(done) {
-    const val = helpers.returnNumber();
-    assert.equal(val, 2);
-    done();
-}
+_app.tests = {}
+_app.tests.unit = require('./unit')
 
 function printTestReport(success, limit, assertionFail) {
 
